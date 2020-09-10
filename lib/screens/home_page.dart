@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'detail_page.dart';
 import 'dart:developer';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +13,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ToDo",
+          "Your Todos",
           style: TextStyle(
             fontSize: 28.0,
             color: Colors.white,
@@ -23,7 +24,16 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // navigate to the detail screen
           log("add button clicked");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return DetailPage();
+              },
+            ),
+          );
         },
         child: Icon(
           Icons.add,
