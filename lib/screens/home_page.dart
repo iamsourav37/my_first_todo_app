@@ -21,6 +21,16 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          log("add button clicked");
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 50.0,
+        ),
+      ),
       body: Container(
         margin: EdgeInsets.all(5.0),
         child: ListView.builder(
