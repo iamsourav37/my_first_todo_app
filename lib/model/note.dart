@@ -37,7 +37,7 @@ class Note {
     if (priority >= 1 && priority <= 2) this._priority = priority;
   }
 
-// a method to convert to map object
+// method to convert to map object
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map<String, dynamic>();
 
@@ -53,7 +53,7 @@ class Note {
     return map;
   }
 
-// named constructor to extract from map object
+// named constructor to extract from map object to Note object
   Note.fromMapObject(Map<String, dynamic> map) {
     this._id = map['id'];
     this._title = map['title'];
