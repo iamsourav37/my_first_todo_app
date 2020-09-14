@@ -34,7 +34,8 @@ class _DetailPageState extends State<DetailPage> {
   void _save() async {
     moveToLastScreen();
 
-    note.date = DateFormat.yMMMd(DateTime.now()).toString();
+    note.date = DateFormat.yMMMd().format(DateTime.now());
+
     int result;
 
     if (note.id == null) {
@@ -135,6 +136,8 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    _titleController.text = note.title;
+    _descriptionController.text = note.description;
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(

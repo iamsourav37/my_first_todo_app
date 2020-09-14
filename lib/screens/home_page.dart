@@ -38,6 +38,8 @@ class _HomePageState extends State<HomePage> {
       Future<List<Note>> noteListFuture = _databaseHelper.getNoteList();
       noteListFuture.then((noteList) {
         setState(() {
+          log("from updateListView, noteList : $noteList");
+          log("from updateListView, count : $count");
           this.noteList = noteList;
           this.count = noteList.length;
         });
@@ -74,6 +76,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           );
+          this.updateListView();
         },
         child: Icon(
           Icons.add,
