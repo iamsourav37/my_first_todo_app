@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
+  final String title;
+  DetailPage(this.title);
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -17,8 +19,11 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          color: Colors.white,
+        ),
         title: Text(
-          "Edit Todo",
+          widget.title,
           style: TextStyle(
             fontSize: 28.0,
             color: Colors.white,
@@ -60,6 +65,7 @@ class _DetailPageState extends State<DetailPage> {
             Padding(
               padding: EdgeInsets.only(top: 20.0),
               child: TextField(
+                onChanged: (newValue) {},
                 controller: _titleController,
                 style: TextStyle(
                   fontSize: 26.0,
@@ -80,6 +86,7 @@ class _DetailPageState extends State<DetailPage> {
             Padding(
               padding: EdgeInsets.only(top: 20.0),
               child: TextField(
+                onChanged: (newValue) {},
                 controller: _descriptionController,
                 style: TextStyle(
                   fontSize: 26.0,
@@ -103,7 +110,7 @@ class _DetailPageState extends State<DetailPage> {
                 children: [
                   Expanded(
                     child: RaisedButton(
-                      elevation: 4.4,
+                      elevation: 6.4,
                       onPressed: () {
                         log("Saved button clicked");
                       },
@@ -124,7 +131,7 @@ class _DetailPageState extends State<DetailPage> {
                   SizedBox(width: 10.0),
                   Expanded(
                     child: RaisedButton(
-                      elevation: 4.4,
+                      elevation: 6.4,
                       onPressed: () {
                         log("Delete button clicked");
                       },

@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             context,
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return DetailPage();
+                return DetailPage("Add Todo");
               },
             ),
           );
@@ -42,32 +42,37 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(
-        margin: EdgeInsets.all(5.0),
+        margin: EdgeInsets.only(top: 5.0),
         child: ListView.builder(
           itemCount: 5,
           itemBuilder: (BuildContext context, int i) {
             return Card(
+              color: Colors.grey[200],
               child: Container(
                 height: 70.0,
-                child: InkWell(
-                  splashColor: Colors.grey[50],
+                child: ListTile(
                   onTap: () {
-                    log("tapped");
-                  },
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.priority_high),
-                    ),
-                    title: Text("My todo app $i"),
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.delete,
-                        color: Colors.lightBlueAccent,
+                    // navigate to detail screen with data
+                    log("navigate to detail screen with data");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage("Edit Todo"),
                       ),
-                      onPressed: () {
-                        log("Delete button pressed");
-                      },
+                    );
+                  },
+                  leading: CircleAvatar(
+                    child: Icon(Icons.low_priority),
+                  ),
+                  title: Text("My todo app $i"),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.lightBlueAccent,
                     ),
+                    onPressed: () {
+                      log("Delete button pressed");
+                    },
                   ),
                 ),
               ),
