@@ -10,8 +10,8 @@ class DatabaseHelper {
   static DatabaseHelper _databaseHelper; // singleton DatabaseHelper
   static Database _database; // singleton database
   final int dbVersion = 1;
-  String database_name = "todo.db";
-  String tableName = "my_todo"; // table name with extension
+  String database_name = "todo.db"; // Database name with extension
+  String tableName = "my_todo";
 // table column name
   String colId = "id";
   String colTitle = "title";
