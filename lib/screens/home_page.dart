@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
 
     if (result == true) {
       // update the view
+      log("navigateToDetailPage@  : $result");
       this.updateListView();
     }
   }
@@ -65,9 +66,9 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
           // navigate to the detail screen
-          Navigator.push(
+          bool result = await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) {
@@ -76,7 +77,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           );
-          this.updateListView();
+          log("inside FAB calling updateListView 0");
+
+          if (result == true) {
+            setState(() {
+              log("inside FAB calling updateListView");
+              this.updateListView();
+            });
+          }
         },
         child: Icon(
           Icons.add,
@@ -108,8 +116,13 @@ class _HomePageState extends State<HomePage> {
                       Icons.delete,
                       color: Colors.lightBlueAccent,
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       log("Delete button pressed");
+                      int result =
+                          await _databaseHelper.deleteNote(noteList[i].id);
+                      if (result != 0) {
+                        this.updateListView();
+                      }
                     },
                   ),
                 ),
